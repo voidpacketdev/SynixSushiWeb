@@ -46,7 +46,7 @@
         <footer>
             <p class="phonenumber">Nr: 0485 3243 0485</p>
             <p class="copyright">SynixMC © 2025 | Gemaakt door Jia Heijnemans</p>
-            <p class="adres">Adres: Janpieterstraat 238, 8390 HB</p>
+            <p class="adres">Adres: Bezemstraat 238, 8390 HB</p>
         </footer>
     </div>
 
