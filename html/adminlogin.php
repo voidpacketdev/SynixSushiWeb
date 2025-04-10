@@ -1,28 +1,33 @@
 <?php
+$loginIncorrect = false;
 session_start();
-$servername = "mysql_db";
-$username = "root";
-$password = "rootpassword";
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=SynixSushi", $username, $password);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-}
+if(isset($_POST['loginbtn'])) {
+    $servername = "mysql_db";
+    $username = "root";
+    $password = "rootpassword";
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=SynixSushi", $username, $password);
+    } catch (PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
 
 // voeren query uit
-$sql = "SELECT * FROM `gebruikers` WHERE `password` = :password AND username = :username";
-$stmt = $conn->prepare($sql);
-$stmt->bindParam(':password', $password);
-$stmt->bindParam(':username', $username);
-$stmt->execute();
-$gebruiker = $stmt->fetch();
+    $sql = "SELECT * FROM `gebruikers` WHERE `password` = :password AND username = :username";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':password', $_POST['password']);
+    $stmt->bindParam(':username', $_POST['username']);
+    $stmt->execute();
+    $gebruiker = $stmt->fetch();
 
-if($gebruiker) {
-    $_SESSION['admin'] = true;
-    header("Location: adminweb.php");
-} else {
-    $loginIncorrect = true;
+    if($gebruiker) {
+        $_SESSION['admin'] = true;
+        header("Location: adminweb.php");
+    } else {
+        $loginIncorrect = true;
+    }
+
 }
 
 
@@ -48,7 +53,7 @@ if($gebruiker) {
 
 <body>
 <div class="logoclass">
-    <a href="index.html">
+    <a href="index.php">
         <img class="logo" src="images/SynixMainLogo.png" alt="logo">
     </a>
 </div>
@@ -76,7 +81,7 @@ if($gebruiker) {
         </div>
 
         <div class="login-container">
-            <button type="submit" class="login-btn">
+            <button name="loginbtn" type="submit" class="login-btn">
                 <img class="bracket-icon" src="images/bracket.png" alt="bracket">
                 Inloggen
             </button>
