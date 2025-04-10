@@ -1,0 +1,187 @@
+* {
+    font-family: "Inder", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+/* BEGIN BODY */
+
+body,
+html {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* EINDE BODY */
+
+/* BEGIN MAIN */
+.main {
+    flex: 1;
+}
+
+.searchfield {
+    color: black;
+}
+
+/* EINDE MAIN */
+
+/* BEGIN HEADER */
+.headerimages {
+    display: flex;
+    justify-content: center;
+}
+
+body.homepage {
+    background-image: url("../images/Header.png");
+    background-color: #101010;
+    background-repeat: no-repeat;
+    background-position: 0px -100px;
+}
+
+
+.logo {
+    width: 200px;
+    margin-top: 130px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.account-login-homepage {
+    display: flex;
+    align-items: center;
+    font-family: "Inder", serif;
+    color: #9D9D9D;
+    font-size: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+
+/* EINDE HEADER */
+
+/* BEGIN HOMEPAGE */
+.introtekst {
+    justify-content: center;
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.rood {
+    color: #8F1632;
+}
+
+.buttonscontainer {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    text-align: center;
+    padding: 20px;
+    margin-right: 50px;
+}
+
+.informatiebtn,
+.menubtn,
+.contactbtn {
+    font-size: 30px;
+    background-color: rgba(255, 39, 39, 0.5);
+    display: inline-block;
+    padding: 10px 20px;
+    border: 0.5px solid #FF0000;
+    text-decoration: none;
+}
+
+/* EINDE HOMEPAGE */
+
+/* BEGIN FOOTER */
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    color: #9D9D9D;
+    background-color: green;
+}
+
+/* EINDE FOOTER */
+
+/* BEGIN MENU SECTION */
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.menu-item {
+    background: #202020;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.menu-item h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.menu-item .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.main {
+    display: flex;
+    justify-content: center; /* Zet de inhoud in het midden */
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.searchfield {
+    width: 300px;
+    padding: 10px 15px;
+    border: 2px solid #161616;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: #202020;
+    outline: none;
+    color: white;
+}
+
+.searchfield:focus {
+    border-color: #8F1632;
+    box-shadow: 0px 0px 8px rgba(230, 57, 70, 0.5);
+}
+
+button:hover {
+    background-color: #c02f3a;
+}
+
+/* EINDE MENU SECTION */

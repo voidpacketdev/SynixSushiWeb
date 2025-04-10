@@ -1,0 +1,122 @@
+* {
+    font-family: "Inder", serif;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #131313;
+}
+
+.logo {
+    width: 200px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+.logoclass {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.loginform {
+    width: 450px;
+    height: 280px;
+    border-radius: 20px;
+    background-color: #161616;
+    padding: 20px;
+}
+
+.logincontainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.formtext {
+    color: #891623;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.inputcontainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.inputbox {
+    display: flex;
+    align-items: center;
+    width: 280px;
+    height: 40px;
+    background-color: #202020;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+.inputfield {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.inputfield::placeholder {
+    color: #434549;
+}
+
+.user-icon,
+.lock-icon {
+    width: 18px;
+}
+
+.login-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-left: 70px;
+}
+
+.login-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #A21637;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: 40px;
+    min-width: 150px;
+}
+
+.login-btn:hover {
+    background-color: #C2185B;
+}
+
+.bracket-icon {
+    width: 18px;
+    height: auto;
+    margin-right: 5px;
+}
+
+/* PHP */
+
+.error {
+    color: red;
+    display: flex;
+    justify-content: center;
+}
