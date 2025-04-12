@@ -6,7 +6,6 @@ $dbname = "SynixSushi";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=SynixSushi", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully <br>";
 
     // Controleer of het formulier is verzonden
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -74,8 +73,10 @@ try {
 
         <button type="submit">Toevoegen</button>
     </form>
+    <form action="adminweb.php" method="get">
+        <button type="submit" class="returnbtn">Terug naar adminpaneel</button>
+    </form>
 
-    <a href="adminweb.php" class="back-link">← Terug naar admin paneel</a>
 </div>
 </body>
 

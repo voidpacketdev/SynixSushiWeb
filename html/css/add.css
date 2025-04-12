@@ -57,7 +57,6 @@ input, textarea {
     border-radius: 8px;
     font-size: 14px;
     background-color: #fafafa;
-    transition: border 0.2s ease-in-out;
 }
 
 input:focus, textarea:focus {
@@ -76,20 +75,15 @@ textarea {
 button {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    background: lawngreen;
     color: white;
     font-size: 16px;
     font-weight: 600;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
-}
 
 /* Fout-/succesbericht */
 .message {
@@ -116,8 +110,8 @@ button:hover {
     color: #0056b3;
 }
 
-/* Fade-in animatie */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+.returnbtn {
+    margin-top: 5px;
+    background: gray;
 }
+
