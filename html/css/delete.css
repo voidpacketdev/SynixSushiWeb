@@ -1,0 +1,120 @@
+/* Main container styles */
+.delete-dish-container {
+    min-height: 100vh;
+    background-color: #f9fafb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 28rem;
+}
+
+.page-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    text-align: center;
+    color: #1f2937;
+    margin-bottom: 2rem;
+}
+
+/* Card styles */
+.dish-removal-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.dish-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #4b5563;
+}
+
+.success-message {
+    color: #059669;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.error-message {
+    color: #dc2626;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.delete-form {
+    width: 100%;
+}
+
+/* Button styles */
+.button {
+    display: inline-block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.button-primary {
+    background-color: #ef4444;
+    color: white;
+}
+
+.button-primary:hover {
+    background-color: #dc2626;
+}
+
+.button-secondary {
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    color: #374151;
+}
+
+.button-secondary:hover {
+    background-color: #e5e7eb;
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* For larger screens, show buttons side by side */
+@media (min-width: 640px) {
+    .button-container {
+        flex-direction: row;
+    }
+
+    .delete-form {
+        width: auto;
+    }
+
+    .button {
+        width: auto;
+        min-width: 120px;
+    }
+}

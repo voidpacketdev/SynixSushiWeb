@@ -1,39 +1,47 @@
 <?php
-// Controleer of de 'verwijder' knop is ingedrukt
-if (isset($_POST['verwijder'])) {
-    // Haal de ID uit de URL op via $_GET
+$servername = "mysql_db";
+$username = "root";
+$password = "rootpassword";
+$dish_name = "Onbekend gerecht"; // standaardwaarde
+
+// Haal de ID uit de URL op
+if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Verbinden met de database
-    $servername = "mysql_db";
-    $username = "root";
-    $password = "rootpassword";
-
     try {
+        // Eén keer verbinden met de database
         $conn = new PDO("mysql:host=$servername;dbname=SynixSushi", $username, $password);
-        // Zet de PDO foutmodus op uitzondering
-        echo "Verbinding succesvol<br>";
-    } catch(PDOException $e) {
-        echo "Verbinding mislukt: " . $e->getMessage();
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Haal de naam van het gerecht op (pas 'titel' aan naar juiste kolomnaam)
+        $stmt = $conn->prepare("SELECT title FROM menu WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        $gerecht = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($gerecht) {
+            $dish_name = $gerecht['title'];
+        }
+
+        // Verwijder het gerecht als er op de knop is geklikt
+        if (isset($_POST['verwijder'])) {
+            $stmt = $conn->prepare("DELETE FROM menu WHERE id = :id");
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                $success_message = "Gerecht verwijderd: " . $dish_name;
+            } else {
+                $error_message = "Er is een fout opgetreden bij het verwijderen.";
+            }
+        }
+
+    } catch (PDOException $e) {
+        $error_message = "Databasefout: " . $e->getMessage();
     }
-
-    // SQL-query om het gerecht te verwijderen
-
-    $sql = "DELETE FROM menu WHERE id = :id";
-    $stmt = $conn->prepare($sql);
-
-    // Bind de parameter ':id' aan de waarde van de id uit $_GET
-    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-
-    // Voer de query uit
-    if ($stmt->execute()) {
-        echo "Gerecht verwijderd met ID: " . $id;
-    } else {
-        echo "Er is een fout opgetreden bij het verwijderen.";
-    }
+} else {
+    $error_message = "Geen geldig ID opgegeven.";
 }
-
 ?>
+
 
 
 <!doctype html>
@@ -43,16 +51,39 @@ if (isset($_POST['verwijder'])) {
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Verwijder Gerecht</title>
+    <link rel="stylesheet" href="css/delete.css">
 </head>
 <body>
 
-<h1>Verwijder gerecht?</h1>
+<div class="delete-dish-container">
+    <div class="content-wrapper">
+        <h1 class="page-title">Verwijder gerecht?</h1>
 
-<form action="delete.php?id=<?php echo $_GET['id']; ?>" method="post">
-    <input type="submit" name="verwijder" value="Ja, verwijder">
-</form>
-<a href="adminweb.php"><button>Terug naar admin paneel</button></a>
+        <div class="dish-removal-card">
+            <?php if (isset($success_message)): ?>
+                <p class="success-message"><?php echo $success_message; ?></p>
+                <div class="button-container">
+                    <a href="adminweb.php" class="button button-secondary">Terug naar admin paneel</a>
+                </div>
+            <?php elseif (isset($error_message)): ?>
+                <p class="error-message"><?php echo $error_message; ?></p>
+                <div class="button-container">
+                    <a href="adminweb.php" class="button button-secondary">Terug naar admin paneel</a>
+                </div>
+            <?php else: ?>
+                <p class="dish-name"><?php echo $dish_name; ?></p>
 
+                <div class="button-container">
+                    <form class="delete-form" action="delete.php?id=<?php echo $_GET['id']; ?>" method="post">
+                        <button type="submit" name="verwijder" class="button button-primary">Ja, verwijder</button>
+                    </form>
+
+                    <a href="adminweb.php" class="button button-secondary">Terug naar admin paneel</a>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
