@@ -53,7 +53,7 @@ try {
 </head>
 <body>
 <div class="container">
-    <h1>Nieuw Menu Item</h1>
+    <h1>Gerecht Toevoegen</h1>
 
     <form method="POST" class="form">
         <div class="input-group">
