@@ -55,7 +55,7 @@ if (isset($_GET['id'])) {
 </head>
 <body>
 
-<div class="delete-dish-container">
+<div class="container">
     <div class="content-wrapper">
         <h1 class="page-title">Verwijder gerecht?</h1>
 
