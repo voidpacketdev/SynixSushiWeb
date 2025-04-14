@@ -1,0 +1,123 @@
+/* Algemene styling */
+body {
+    font-family: "Inder", serif;
+    background: #131313;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 400px;
+    background: #232323;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Titel */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Formulier */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input-groepen */
+.input-group {
+    text-align: left;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #891623;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fafafa;
+}
+
+input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    background: #fff;
+}
+
+/* Textarea */
+textarea {
+    resize: none;
+    height: 90px;
+}
+
+/* Knoppen */
+button {
+    width: 100%;
+    padding: 12px;
+    background: lawngreen;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+button:hover {
+    background: #7bcf00;
+}
+
+/* Terugknop (apart gestyled) */
+.returnbtn {
+    margin-top: 10px;
+    background: #666;
+    color: white;
+}
+
+.returnbtn:hover {
+    background: #444;
+}
+
+/* Bericht feedback */
+.message {
+    color: #d9534f;
+    font-weight: bold;
+    margin-bottom: 15px;
+    background: #fdecea;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Animatie */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
