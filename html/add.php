@@ -23,7 +23,6 @@ try {
             $stmt->bindParam(':beschrijving', $beschrijving);
 
             if ($stmt->execute()) {
-                echo "Gerecht succesvol toegevoegd!";
             } else {
                 echo "Er is een fout opgetreden bij het toevoegen van het gerecht.";
             }

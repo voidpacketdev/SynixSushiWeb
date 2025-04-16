@@ -75,7 +75,7 @@ if (isset($_GET['id'])) {
 
                 <div class="button-container">
                     <form class="delete-form" action="delete.php?id=<?php echo $_GET['id']; ?>" method="post">
-                        <button type="submit" name="verwijder" class="button button-primary">Ja, verwijder</button>
+                        <button type="submit" name="verwijder" class="button button-primary">Verwijder</button>
                     </form>
 
                     <a href="adminweb.php" class="button button-secondary">Terug naar admin paneel</a>

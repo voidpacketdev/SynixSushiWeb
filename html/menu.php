@@ -5,18 +5,20 @@ $password = "rootpassword";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=SynixSushi", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-   echo "Connection failed: " . $e->getMessage();
+    echo "Connection failed: " . $e->getMessage();
 }
 
-if (isset($_POST['zoekveld'])) {
-    $stmt = $conn->prepare("SELECT * FROM `menu` WHERE title Like '%" . $_POST['zoekveld'] . "%'");
+if (isset($_POST['zoekveld']) && !empty($_POST['zoekveld'])) {
+    $zoekterm = "%" . $_POST['zoekveld'] . "%";
+    $stmt = $conn->prepare("SELECT * FROM `menu` WHERE title LIKE :zoekterm");
+    $stmt->bindParam(':zoekterm', $zoekterm, PDO::PARAM_STR);
 } else {
     $stmt = $conn->prepare("SELECT * FROM `menu`");
 }
-$stmt->execute()
+$stmt->execute();
 ?>
-
 
 
 <!DOCTYPE html>
@@ -41,38 +43,34 @@ $stmt->execute()
         <div class="headerimages">
             <a href="index.php"><img class="logo" src="images/SynixMainLogo.png" alt="logo"></a>
         </div>
-
     </header>
 
-<div class="main">
-
-    <form action="menu.php" method="post">
-        <input class="searchfield" placeholder="Zoek een gerecht" type="text" name="zoekveld">
-    </form>
-</div>
-
-    <div class="menu-container">
-    <?php
-    while ($result = $stmt->fetch()) {
-        ?>
-        <div class="menu-item">
-            <h3><?php echo $result['title']; ?></h3>
-            <p class="desc"><?php echo $result['beschrijving'];?></p>
-            <p class="price">$<?php echo number_format($result['prijs'], 2); ?></p>
-        </div>
-        <?php
-    }
-    ?>
+    <div class="main">
+        <form action="menu.php" method="post">
+            <input class="searchfield" placeholder="Zoek een gerecht" type="text" name="zoekveld">
+        </form>
     </div>
 
-</div>
+    <div class="menu-container">
+        <?php
+        while ($result = $stmt->fetch()) {
+            ?>
+            <div class="menu-item">
+                <h3><?php echo htmlspecialchars($result['title']); ?></h3>
+                <p class="desc"><?php echo htmlspecialchars($result['beschrijving']); ?></p>
+                <p class="price">€<?php echo number_format($result['prijs'], 2, ',', '.'); ?></p>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
+
     <footer>
         <p class="phonenumber">Nr: 0485 3243 0485</p>
         <p class="copyright">SynixMC © 2025 | Gemaakt door Jia Heijnemans</p>
         <p class="adres">Adres: Janpieterstraat 238, 8390 HB</p>
     </footer>
 </div>
-
-
 </body>
+
 </html>
